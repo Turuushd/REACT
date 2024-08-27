@@ -1,18 +1,38 @@
-import { Card } from "./bagshiih/card";
+import { Option } from "./bagshiih/option";
+import { ProductCard } from "./bagshiih/product-card";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch("https://dummyjson.com/products")
+  const data = await response.json();
+  const {products} = data;
+
+  const res = await fetch("https://dummyjson.com/products/categories")
+  const list = await res.json();
+
+  for (let i = 0; i < data.length; i++){
+    console.log(data[i])
+  }
+  
   return (
     <div>
       <main>
         <section>
           <div className="container">
+            <select name="" id="">
+              <option value="">Select category...</option>
+              {list.map((cate) => (
+                <Option cate={cate}/>
+              ))};
+            </select>
             <div className="row">
-              <Card title="My Portfolio Item #1" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
-              <Card title="My Portfolio Item #2" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
-              <Card title="My Portfolio Item #3" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
-              <Card title="My Portfolio Item #4" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
-              <Card title="My Portfolio Item #5" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
-              <Card title="My Portfolio Item #6" desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores repellendus fuga, temporibus veniam fugiat quia sint nam harum minima provident." btn="Read more"/>
+              {products.map((product) => (
+                <div key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+            <div className="pagination">
+              
             </div>
           </div>
         </section>
