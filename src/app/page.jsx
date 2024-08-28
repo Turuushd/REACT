@@ -8,10 +8,6 @@ export default async function Home() {
 
   const res = await fetch("https://dummyjson.com/products/categories")
   const list = await res.json();
-
-  for (let i = 0; i < data.length; i++){
-    console.log(data[i])
-  }
   
   return (
     <div>
@@ -32,7 +28,13 @@ export default async function Home() {
               ))}
             </div>
             <div className="pagination">
-              
+              <PaginationBtn number="1"/>
+              <PaginationBtn number="2"/>
+              <PaginationBtn number="3"/>
+              <PaginationBtn number="4"/>
+              <PaginationBtn number="5"/>
+              <PaginationBtn number="6"/>
+              <PaginationBtn number="7"/>
             </div>
           </div>
         </section>
@@ -40,3 +42,10 @@ export default async function Home() {
     </div>
   );
 }
+
+const PaginationBtn = (props) => {
+  const {number} = props;
+  return (
+    <button>{number}</button>
+  );
+};
