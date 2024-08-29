@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const Page = () => {
-  const [text, setText] = useState(" Hello I'm hidden text");
+  const [text, setText] = useState("");
   const handleHideClick = () => {
     if (text === "") {
       setText(" Hello I'm hidden text");

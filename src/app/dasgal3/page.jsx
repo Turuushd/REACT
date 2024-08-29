@@ -27,16 +27,14 @@ const Page = () => {
         <main>
             <div className="container">
                 <div className="dasgal-two">
-                    <input value={firstvalue} type="text" onChange={(e)=>setFirstvalue(e.target.value)} />
-                    <select value={operator} onChange={(e)=>{
-                        setOperator(e.target.value)
-                    }}>
+                    <input value={firstvalue} type="text" onChange={(e) => setFirstvalue(e.target.value)} />
+                    <select value={operator} onChange={(e) => {setOperator(e.target.value)}}>
                         <option value="+">+</option>
                         <option value="-">-</option>
                         <option value="/">/</option>
                         <option value="*">*</option>
                     </select>
-                    <input value={secondvalue} type="text" onChange={(e)=>setSecondvalue(e.target.value)} /> =
+                    <input value={secondvalue} type="text" onChange={(e) => setSecondvalue(e.target.value)} /> =
                     <span>{result}</span>
                 </div>
             </div>
